@@ -1,5 +1,29 @@
 import React, { useState } from 'react';
 
+const styles = {
+    navdiv : {
+        textAlign: 'center',
+        display: 'flex',
+        justifyContent: 'center'
+    },
+    ul: {
+        listStyleType: 'none',
+        display: 'flex',
+        justifyContent: 'center',
+        fontFamily: "'Courier New', Courier, monospace"
+    },
+    a: {
+        textDecoration: 'none',
+        margin: '0 20px'
+    },
+    li: {
+        textDecoration: 'none',
+        fontWeight: 'bold',
+        fontSize: '20px',
+        color: '#381f1e'
+    }
+}
+
 const Navigation = ({ currentPage }) => {
 
     const [setToggleMenu] = useState(false);
@@ -19,36 +43,36 @@ const Navigation = ({ currentPage }) => {
                     <a style={styles.a}
                         href="/"
                         onClick={() => handlePageClick("Home")}
-                        className={page === "About" ? "nav-link active" : "nav-link"}
+                        className={page === "Home" ? "nav-link active" : "nav-link"}
                     >
-                        About Me
+                        Home
+                    </a>
+                </li>
+                <li style={styles.li}>
+                    <a style={styles.a}
+                        href="/favourites"
+                        onClick={() => handlePageClick("Favourites")}
+                        className={page === "Favourites" ? "nav-link active" : "nav-link"}
+                    >
+                        Favourites
+                    </a>
+                </li>
+                <li style={styles.li}>
+                    <a style={styles.a}
+                        href="/beers"
+                        onClick={() => handlePageClick("Beers")}
+                        className={page === "Beers" ? "nav-link active" : "nav-link"}
+                    >
+                        Beers
                     </a>
                 </li>
                 <li style={styles.li}>
                     <a style={styles.a}
                         href="/logout"
-                        onClick={() => handlePageClick("Favourites")}
-                        className={page === "Projects" ? "nav-link active" : "nav-link"}
-                    >
-                        Projects
-                    </a>
-                </li>
-                <li style={styles.li}>
-                    <a style={styles.a}
-                        href="/resume"
-                        onClick={() => handlePageClick("Beers")}
-                        className={page === "Resume" ? "nav-link active" : "nav-link"}
-                    >
-                        Resume
-                    </a>
-                </li>
-                <li style={styles.li}>
-                    <a style={styles.a}
-                        href="/contact"
                         onClick={() => handlePageClick("Logout")}
-                        className={page === "Contact" ? "nav-link active" : "nav-link"}
+                        className={page === "Logout" ? "nav-link active" : "nav-link"}
                     >
-                        Contact
+                        Logout
                     </a>
                 </li>
             </ul>

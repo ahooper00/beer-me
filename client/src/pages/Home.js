@@ -1,10 +1,16 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 
-return (
-    <main>
-        <div className='container'>
-            
-        </div>
-    </main>
-)
+const home = () => {
+    return (
+        <main>
+            <div className='container'>
+                <div>
+                    Check out these beers of the week!
+                </div>
+            </div>
+        </main>
+    )
+}
+
+export default home;

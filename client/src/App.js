@@ -6,7 +6,7 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import Home from './pages/Home';
 import Navigation from './components/Navigation';
@@ -45,16 +45,18 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
+
         <div className="flex-column justify-flex-start min-100-vh">
-          <Header />
+          {/* <Header /> */}
           <div className="nav-container">
             <Navigation />
           </div>
-          <div className="container">
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route exact path="/login">
+          <Routes>
+            <div className="container">
+              <Route exact path="/">
+                <Home />
+              </Route>
+              {/* <Route exact path="/login">
               <Login />
             </Route>
             <Route exact path="/signup">
@@ -68,10 +70,12 @@ function App() {
             </Route>
             <Route exact path="/favourites">
               <Favourites />
-            </Route>
-          </div>
-          <Footer />
+            </Route> */}
+            </div>
+            {/* <Footer /> */}
+          </Routes>
         </div>
+
       </Router>
     </ApolloProvider>
   );
