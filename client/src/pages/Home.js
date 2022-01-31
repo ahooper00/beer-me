@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 
-const home = () => {
+const Home = () => {
     return (
         <main>
             <div className='container'>
@@ -13,4 +13,4 @@ const home = () => {
     )
 }
 
-export default home;
+export default Home;

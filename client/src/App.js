@@ -51,15 +51,13 @@ function App() {
           <div className="nav-container">
             <Navigation />
           </div>
-          <Routes>
-            <div className="container">
-              <Route exact path="/">
-                <Home />
+          <div className="container">
+            <Routes>
+              <Route exact path="/" element={<Home />}>
               </Route>
-              {/* <Route exact path="/login">
-              <Login />
-            </Route>
-            <Route exact path="/signup">
+              <Route exact path="/login" element={<Login />}>
+              </Route>
+              {/* <Route exact path="/signup">
               <Signup />
             </Route>
             <Route exact path="/me">
@@ -71,13 +69,13 @@ function App() {
             <Route exact path="/favourites">
               <Favourites />
             </Route> */}
-            </div>
-            {/* <Footer /> */}
-          </Routes>
+            </Routes>
+          </div>
+          {/* <Footer /> */}
         </div>
 
       </Router>
-    </ApolloProvider>
+    </ApolloProvider >
   );
 }
 
