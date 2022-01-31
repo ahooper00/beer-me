@@ -41,12 +41,10 @@ const Login = (props) => {
     };
 
     return (
-        <main className="container">
+        <main>
             <div>
                 <div className="card">
-                    <h4>
-                        LOGIN
-                    </h4>
+                    <h4 className="card-header bg-dark text-light">Login</h4>
                     <div className="card-body">
                         {data ? (
                             <p>
@@ -80,6 +78,7 @@ const Login = (props) => {
                                 </button>
                             </form>
                         )}
+
                         {error && (
                             <div className="my-3 p-3 bg-danger text-white">
                                 {error.message}

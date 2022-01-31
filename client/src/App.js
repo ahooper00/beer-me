@@ -45,9 +45,8 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-
         <div className="flex-column justify-flex-start min-100-vh">
-          {/* <Header /> */}
+          <Header />
           <div className="nav-container">
             <Navigation />
           </div>
@@ -57,10 +56,9 @@ function App() {
               </Route>
               <Route exact path="/login" element={<Login />}>
               </Route>
-              {/* <Route exact path="/signup">
-              <Signup />
-            </Route>
-            <Route exact path="/me">
+              <Route exact path="/signup" element={<Signup />}>
+              </Route>
+              {/* <Route exact path="/me">
               <Profile />
             </Route>
             <Route exact path="/profiles/:username">

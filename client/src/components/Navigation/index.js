@@ -37,7 +37,7 @@ const Navigation = ({ currentPage }) => {
     }
     
     return (
-        <div className="navdiv">
+        <div className="navdiv" style={styles.navdiv}>
             <ul style={styles.ul}>
                 <li style={styles.li}>
                     <a style={styles.a}
@@ -68,11 +68,11 @@ const Navigation = ({ currentPage }) => {
                 </li>
                 <li style={styles.li}>
                     <a style={styles.a}
-                        href="/logout"
-                        onClick={() => handlePageClick("Logout")}
-                        className={page === "Logout" ? "nav-link active" : "nav-link"}
+                        href="/profile"
+                        onClick={() => handlePageClick("Profiles")}
+                        className={page === "Profiles" ? "nav-link active" : "nav-link"}
                     >
-                        Logout
+                        My details
                     </a>
                 </li>
             </ul>
