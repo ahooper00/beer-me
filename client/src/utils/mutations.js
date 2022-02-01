@@ -35,3 +35,37 @@ mutation addReview($reviewText: String!) {
     }
 }
 `;
+
+export const SAVE_BEER = gql`
+mutation saveBeer($beer: SavedBeerInput!) {
+  saveBeer(beer: $beer) {
+    username
+    email
+    beerCount
+    savedBeers {
+      beerId
+      brand
+      description
+      image
+      link
+    }
+  }
+}
+`;
+
+export const REMOVE_BEER = gql`
+mutation removeBeer($beerId: String!) {
+  removeBeer(beerId: $beerId) {
+    username
+    email
+    beerCount
+    savedBeers {
+      beerId
+      brand
+      description
+      image
+      link
+    }
+  }
+}
+`;

@@ -37,7 +37,7 @@ const Header = ({ currentPage }) => {
         <header className="mb-4 py-3 display-flex align-center">
             <div className="header-container">
                 <h1 className="m-0" style={styles.h1}>
-                    Beer Me
+                    Let's get hopping
                 </h1>
                 <div>
                     <ul style={styles.ul}>

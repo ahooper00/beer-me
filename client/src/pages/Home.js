@@ -51,8 +51,8 @@ const Home = () => {
                             Beer One
                         </h4>
                         <ul>
-                            <li>Created by: Brewery</li>
-                            <li>Type: Sour beer with hints of blueberry and strawberry</li>
+                            <li>Brand: Brewery</li>
+                            <li>Description: Sour beer with hints of blueberry and strawberry</li>
                             <li>Alcohol: 4.3%</li>
                         </ul>
                     </div>
@@ -70,8 +70,8 @@ const Home = () => {
                             Beer Two
                         </h4>
                         <ul>
-                            <li>Created by: This Brewery</li>
-                            <li>Type: Full bodied pale ale</li>
+                            <li>Brand: This Brewery</li>
+                            <li>Description: Full bodied pale ale</li>
                             <li>Alcohol: 5.6%</li>
                         </ul>
                     </div>
@@ -89,8 +89,8 @@ const Home = () => {
                             Beer Three
                         </h4>
                         <ul>
-                            <li>Created by: That Brewery</li>
-                            <li>Type: Fully-hopped IPA with tropical aromatics</li>
+                            <li>Brand: That Brewery</li>
+                            <li>Description: Fully-hopped IPA with tropical aromatics</li>
                             <li>Alcohol: 5.0%</li>
                         </ul>
                     </div>
@@ -108,8 +108,8 @@ const Home = () => {
                             Beer Four
                         </h4>
                         <ul>
-                            <li>Created by: Another Brewery</li>
-                            <li>Type: Salty and sour with real watermelon juice</li>
+                            <li>Brand: Another Brewery</li>
+                            <li>Description: Salty and sour with real watermelon juice</li>
                             <li>Alcohol %: 4.2%</li>
                         </ul>
                     </div>

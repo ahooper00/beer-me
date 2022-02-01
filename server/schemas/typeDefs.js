@@ -21,6 +21,14 @@ const typeDefs = gql`
     user: User
   }
 
+  input InputBeer {
+    beerId: String
+    brand: [String]
+    description: String
+    image: String
+    link: String
+  }
+
   type Query {
     users: [User]
     user(username: String!): User

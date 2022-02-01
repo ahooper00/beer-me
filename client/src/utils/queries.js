@@ -27,6 +27,19 @@ export const QUERY_REVIEWS = gql`
     }
 `;
 
+export const QUERY_BEERS = gql`
+    query getBeers {
+        beers {
+          beerId
+          name
+          brand
+          description
+          image
+          link
+        }
+    }
+`;
+
 export const QUERY_ME = gql`
   query me {
     me {
