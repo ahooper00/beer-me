@@ -12,7 +12,7 @@ import Home from './pages/Home';
 import Navigation from './components/Navigation';
 import Signup from './components/SignupForm/index';
 import Login from './components/LoginForm/index';
-import Favourites from './pages/Favourites';
+import SavedBeer from './pages/SavedBeer';
 import Profile from './pages/Profile.js';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -63,10 +63,9 @@ function App() {
             </Route>
             <Route exact path="/profiles/:username">
               <Profile />
-            </Route>
-            <Route exact path="/favourites">
-              <Favourites />
             </Route> */}
+              <Route exact path="/savedBeer" element={<SavedBeer />}>
+              </Route>
             </Routes>
           </div>
           <Footer />

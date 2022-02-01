@@ -55,7 +55,7 @@ mutation saveBeer($beer: SavedBeerInput!) {
 
 export const REMOVE_BEER = gql`
 mutation removeBeer($beerId: String!) {
-  removeBeer(beerId: $beerId) {
+  removeBeerId(beerId: $beerId) {
     username
     email
     beerCount

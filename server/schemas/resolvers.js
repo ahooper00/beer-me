@@ -81,27 +81,27 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
         saveBeer: async (parent, { newBeer }, context) => {
-            if (context.user) {
-                const updateUser = await User.findOneAndUpdate(
-                    { _id: context.user._id },
-                    { $push: { savedBeer: newBeer } },
-                    { new: true }
-                );
-                return updateUser;
-            }
-            throw new AuthenticationError("You must be logged in first");
+            // if (context.user) {
+            //     const updateUser = await User.findOneAndUpdate(
+            //         { _id: context.user._id },
+            //         { $push: { savedBeer: newBeer } },
+            //         { new: true }
+            //     );
+            //     return updateUser;
+            // }
+            // throw new AuthenticationError("You must be logged in first");
         },
-        removeBeer: async (parent, { beerId }, context) => {
-            if (context.user) {
-                const updateUser = await User.findOneAndUpdate(
-                    { _id: context.user._id },
-                    { $pull: { savedBeer: { beerId } } },
-                    { new: true }
-                );
-                return updateUser;
-            }
-            throw new AuthenticationError("You must be logged in first");
-        },
+        // removeBeer: async (parent, { beerId }, context) => {
+        //     if (context.user) {
+        //         const updateUser = await User.findOneAndUpdate(
+        //             { _id: context.user._id },
+        //             { $pull: { savedBeer: { beerId } } },
+        //             { new: true }
+        //         );
+        //         return updateUser;
+        //     }
+        //     throw new AuthenticationError("You must be logged in first");
+        // },
     },
 };
 

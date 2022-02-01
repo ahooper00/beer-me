@@ -21,7 +21,14 @@ const typeDefs = gql`
     user: User
   }
 
-  input InputBeer {
+  input NewBeer {
+    brand: [String]
+    description: String
+    image: String
+    link: String
+  }
+
+  type Beer {
     beerId: String
     brand: [String]
     description: String
@@ -39,6 +46,7 @@ const typeDefs = gql`
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
+    saveBeer(newBeer: NewBeer): Beer
     login(email: String!, password: String!): Auth
     addReview(reviewText: String!): Review
     removeReview(reviewId: ID!): Review

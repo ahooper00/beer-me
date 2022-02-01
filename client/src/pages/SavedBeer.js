@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { QUERY_ME } from '../utils/queries';
+import { Card, Button } from 'react-bootstrap';
 import { REMOVE_BEER } from '../utils/mutations';
-import { Jumbotron, Container, CardColumns, Card, Button } from 'react-bootstrap';
-import { removeBeer, saveBeer } from 
 
 const SavedBeers = () => {
     const [refetchData, setRefetchData] = useState(true);
-    const [removeBook, { error }] = useMutation(REMOVE_BEER);
-    const { loading, data, refetch } = useQuery(QUERY_ME, {
+    const [removeBeer, { error }] = useMutation(REMOVE_BEER);
+    const { data, refetch } = useQuery(QUERY_ME, {
         refetchOnMount: "always",
         force: true,
     });
@@ -19,11 +18,11 @@ const SavedBeers = () => {
         refetch();
     }
 
-    const handleDeleteBeer = async (bookId) => {
+    const handleDeleteBeer = async (beerId) => {
 
         try {
             const { data } = await removeBeer({ variables: { beerId: beerId } });
-            removeBeerId(beerId)
+            removeBeer(beerId)
 
         } catch (err) {
             console.error(err);
@@ -44,8 +43,8 @@ const SavedBeers = () => {
                         ? `Viewing ${userData.savedBeers.length} saved ${userData.savedBeers.length === 1 ? 'beer' : 'beers'}:`
                         : 'You have no saved beers!'}
                 </h2>
-                <CardColumns>
-                    {userData.savedBooks.map((beer) => {
+                <div>
+                    {userData.savedBeers.map((beer) => {
                         return (
                             <Card key={beer.beerId} border='dark'>
                                 {beer.image ? <Card.Img src={beer.image} alt={`The beer can for ${beer.name}`} variant='top' /> : null}
@@ -60,7 +59,7 @@ const SavedBeers = () => {
                             </Card>
                         );
                     })}
-                </CardColumns>
+                </div>
             </div>
         </section>
     );
