@@ -10,8 +10,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import Home from './pages/Home';
 import Navigation from './components/Navigation';
-import Signup from './pages/Signup';
-import Login from './pages/Login';
+import Signup from './components/SignupForm/index';
+import Login from './components/LoginForm/index';
 import Favourites from './pages/Favourites';
 import Profile from './pages/Profile.js';
 import Header from './components/Header';
