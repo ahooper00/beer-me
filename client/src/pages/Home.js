@@ -1,5 +1,4 @@
 import React from 'react';
-import { useQuery } from '@apollo/client';
 import beer from '../assets/beer.webp';
 
 const styles = {

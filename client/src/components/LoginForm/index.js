@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
-import { LOGIN_USER } from '../../utils/mutations';
-
-import Auth from '../../utils/auth';
+import { login } from '../../utils/userService';
 
 const Login = (props) => {
     const [formState, setFormState] = useState({ email: '', password: '' });
-    const [login, { error, data }] = useMutation(LOGIN_USER);
+    const [loggedIn, setLoggedIn] = useState(false);
 
     // update state based on form input changes
     const handleChange = (event) => {
@@ -24,11 +21,8 @@ const Login = (props) => {
         event.preventDefault();
         console.log(formState);
         try {
-            const { data } = await login({
-                variables: { ...formState },
-            });
-
-            Auth.login(data.login.token);
+            await login(formState.email, formState.password);
+            setLoggedIn(true);
         } catch (e) {
             console.error(e);
         }
@@ -46,7 +40,7 @@ const Login = (props) => {
                 <div className="card">
                     <h4 className="card-header bg-dark text-light">Login</h4>
                     <div className="card-body">
-                        {data ? (
+                        {loggedIn ? (
                             <p>
                                 Success! You may now head{' '}
                                 <Link to="/">back to the homepage.</Link>
@@ -77,12 +71,6 @@ const Login = (props) => {
                                     Submit
                                 </button>
                             </form>
-                        )}
-
-                        {error && (
-                            <div className="my-3 p-3 bg-danger text-white">
-                                {error.message}
-                            </div>
                         )}
                     </div>
                 </div>

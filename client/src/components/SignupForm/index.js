@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
-import { useMutation } from '@apollo/client';
-import { ADD_USER } from '../../utils/mutations';
-
-import Auth from '../../utils/auth';
+import { signup } from '../../utils/userService';
 
 const Signup = () => {
     const [formState, setFormState] = useState({
@@ -12,7 +8,7 @@ const Signup = () => {
         email: '',
         password: '',
     });
-    const [addUser, { error, data }] = useMutation(ADD_USER);
+    const [loggedIn, setLoggedIn] = useState(false);
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -28,11 +24,8 @@ const Signup = () => {
         console.log(formState);
 
         try {
-            const { data } = await addUser({
-                variables: { ...formState },
-            });
-
-            Auth.login(data.addUser.token);
+            await signup(formState.email, formState.username, formState.password);
+            setLoggedIn(true);
         } catch (e) {
             console.error(e);
         }
@@ -44,7 +37,7 @@ const Signup = () => {
                 <div className="card">
                     <h4 className="card-header bg-dark">Sign Up</h4>
                     <div className="card-body">
-                        {data ? (
+                        {loggedIn ? (
                             <p>
                                 Success! You may now head{' '}
                                 <Link to="/">back to the homepage.</Link>
@@ -83,12 +76,6 @@ const Signup = () => {
                                     Submit
                                 </button>
                             </form>
-                        )}
-
-                        {error && (
-                            <div className="my-3 p-3 bg-danger text-white">
-                                {error.message}
-                            </div>
                         )}
                     </div>
                 </div>
