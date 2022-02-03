@@ -3,12 +3,13 @@ const { User } = require("../../models");
 
 router.post("/", async (req, res) => {
   try {
-    const { email, name, password } =
+    const { email, dob, name, password } =
       req.body;
 
     if (
       !email ||
       !name ||
+      !dob ||
       !password
     ) {
       res.status(400).json({ message: "Invalid data send" });
