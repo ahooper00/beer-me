@@ -41,7 +41,7 @@ const Navigation = ({ currentPage }) => {
             <ul style={styles.ul}>
                 <li style={styles.li}>
                     <a style={styles.a}
-                        href="/"
+                        href="/home"
                         onClick={() => handlePageClick("Home")}
                         className={page === "Home" ? "nav-link active" : "nav-link"}
                     >

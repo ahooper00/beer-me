@@ -1,5 +1,3 @@
-// import { gql } from '@apollo/client';
-
 export const login = async (email, password) => {
   const response = await fetch("/api/users/login", {
     method: "POST",

@@ -1,5 +1,6 @@
-import React from 'react';
-import beer from '../assets/beer.webp';
+import React, { useEffect } from 'react';
+import { useState } from 'react';
+import { topBeers } from '../utils/beerService';
 
 const styles = {
     // container: {
@@ -17,7 +18,9 @@ const styles = {
         flexDirection: 'column',
         flexWrap: 'wrap',
         border: '2px solid rgb(77, 72, 72)',
-        width: '25%'
+        width: '25%',
+        margin: '20px',
+        padding: '10px'
     },
     h3: {
         borderBottom: 'black solid 2px'
@@ -26,7 +29,7 @@ const styles = {
         flexDirection: 'column',
         display: 'inline-flex',
         flexWrap: 'wrap',
-        border: 'black solid 2px'
+        // border: 'black solid 2px'
     },
     img: {
         width: '200px',
@@ -35,7 +38,39 @@ const styles = {
     }
 }
 
+const beerCard = ({ name, brand, description }) => {
+    return (
+        <div className="card" style={styles.card}>
+            <div className="cardBody" style={styles.cardBody}>
+                <h4>
+                    {name}
+                </h4>
+                <ul>
+                    <li>Brand: {brand}</li>
+                    <li>Description: {description}</li>
+                </ul>
+            </div>
+            {/* <img
+                src={beer}
+                alt="Beer"
+                className="Img"
+                style={styles.img}
+            ></img> */}
+        </div>
+    )
+}
+
 const Home = () => {
+    const [homeBeers, setHomeBeers] = useState([])
+    useEffect(() => {
+        async function fetchTopBeers() {
+            const response = await topBeers();
+            console.log(response);
+            setHomeBeers(response);
+        }
+        fetchTopBeers();
+    }, []);
+
     return (
         <main>
             <div className='container'>
@@ -44,25 +79,9 @@ const Home = () => {
                         Check out these beers of the week!
                     </h3>
                 </div>
-                <div className="card" style={styles.card}>
-                    <div className="cardBody" styls={styles.cardBody}>
-                        <h4>
-                            Beer One
-                        </h4>
-                        <ul>
-                            <li>Brand: Brewery</li>
-                            <li>Description: Sour beer with hints of blueberry and strawberry</li>
-                            <li>Alcohol: 4.3%</li>
-                        </ul>
-                    </div>
-                    <img
-                        src={beer}
-                        alt="Beer"
-                        className="Img"
-                        style={styles.img}
-                    ></img>
-                </div>
 
+                { homeBeers.map(beerCard) }
+{/* 
                 <div className="card" style={styles.card}>
                     <div className="cardBody" styls={styles.cardBody}>
                         <h4>
@@ -118,7 +137,7 @@ const Home = () => {
                         className="Img"
                         style={styles.img}
                     ></img>
-                </div>
+</div> */}
             </div>
 
             <div>
