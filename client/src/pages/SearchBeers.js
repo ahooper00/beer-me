@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import AddBeerButton from '../components/AddBeerForm';
 import { SearchBeers } from '../utils/beerService';
 
 const styles = {
@@ -66,6 +67,7 @@ const Search = () => {
             <label htmlFor="header-search">
                 <h3><span className="visually-hidden">Search Crispy Boys</span></h3>
             </label>
+            <AddBeerButton />
             <br></br>
             <input
                 type="text"
@@ -83,7 +85,7 @@ const Search = () => {
                 ? <h3>No beers found with that name</h3>
                 : searchBeers.map(beerCard)}
             </div>
-            <div className="card" style={styles.card}>
+            {/* <div className="card" style={styles.card}>
                 <div className="cardBody" style={styles.cardBody}>
                     <form className="addBeerForm">
                         <div>
@@ -116,7 +118,7 @@ const Search = () => {
                         </div>
                     </form>
                 </div>
-            </div>
+            </div> */}
         </main>
     )
 }
