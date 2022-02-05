@@ -61,3 +61,19 @@ export const SearchBeers = async (query) => {
     alert("No beer with that name found :(");
   }
 }
+
+export const FavouriteBeer = async (beerId) => {
+  const response = await fetch("/api/beers/favourite", {
+    method: "POST",
+    body: JSON.stringify({
+      beerId
+    }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (!response.ok) {
+    alert("Failed to save your beer!");
+  }
+}

@@ -39,7 +39,6 @@ const AddBeerForm = ({ onSubmit }) => {
         brand: '',
         description: '',
     });
-    const [submitBeer, setSubmitBeer] = useState(false);
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -50,22 +49,21 @@ const AddBeerForm = ({ onSubmit }) => {
         });
     };
 
-    const handleFormSubmit = async (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log(formState);
 
         try {
-            await AddBeer(formState.name, formState.brand, formState.description);
-            setSubmitBeer(true);
+            await AddBeer(formState)
+            onSubmit();
         } catch (err) {
-            console.log(err);
-        }
+            console.log(err)
+        };
     }
 
     return (
         <div className="card" style={styles.card}>
             <div className="cardBody" style={styles.cardBody}>
-                <form className="addBeerForm" onSubmit={handleFormSubmit}>
+                <form className="addBeerForm" onSubmit={handleSubmit}>
                     <div>
                         <h3>Add your own beer here!</h3>
                         <label htmlFor="name" className="form-label">Beer Name</label>
@@ -100,7 +98,7 @@ const AddBeerForm = ({ onSubmit }) => {
                             onChange={handleChange}
                         />
                     </div>
-                    <button onClick={() => onSubmit()}>Submit</button>
+                    <button type='submit'>Submit</button>
                 </form>
             </div>
         </div>

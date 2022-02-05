@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import AddBeerButton from '../components/AddBeerForm';
 import { SearchBeers } from '../utils/beerService';
+import BeerCard from '../components/BeerCard/index';
 
 const styles = {
     card: {
@@ -24,28 +25,6 @@ const styles = {
     },
 }
 
-const beerCard = ({ name, brand, description }) => {
-    return (
-        <div className="card" style={styles.card}>
-            <div className="cardBody" style={styles.cardBody}>
-                <h4>
-                    {name}
-                </h4>
-                <ul>
-                    <li>Brand: {brand}</li>
-                    <li>Description: {description}</li>
-                </ul>
-            </div>
-            {/* <img
-                src={beer}
-                alt="Beer"
-                className="Img"
-                style={styles.img}
-            ></img> */}
-        </div>
-    )
-}
-
 const Search = () => {
     const [searchBeers, setSearchBeers] = useState([])
     const [searchInput, setSearchInput] = useState("");
@@ -59,8 +38,6 @@ const Search = () => {
             .then(setSearchBeers)
             .catch(err => console.error(err));
     };
-
-
 
     return (
         <main>
@@ -83,7 +60,12 @@ const Search = () => {
             <div className='container'>
                 {searchBeers.length === 0 
                 ? <h3>No beers found with that name</h3>
-                : searchBeers.map(beerCard)}
+                : searchBeers.map(beer => <BeerCard 
+                id={beer.id} 
+                name={beer.name} 
+                brand={beer.brand} 
+                description={beer.description} 
+                favourite={beer.favourite} />) }
             </div>
             {/* <div className="card" style={styles.card}>
                 <div className="cardBody" style={styles.cardBody}>

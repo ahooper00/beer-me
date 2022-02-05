@@ -3,18 +3,34 @@ const { Beers, User } = require("../../models");
 const withAuth = require("../../utils/auth");
 const { Op } = require("sequelize");
 const { getRandom } = require("../../utils/helpers");
+const Favourites = require("../../models/Favourites");
+
+const getBeersWithFavourite = async (userId, limit) => {
+    const beers = await Beers.findAll({
+        attributes: [
+            "id",
+            "name",
+            "brand",
+            "description"
+        ],
+        include: {
+            model: Favourites,
+            required: false,
+            where: {
+                user_id: {
+                    [Op.eq]: userId
+                }
+            }
+        },
+        limit: limit
+    });
+    return beers.map(({ id, name, brand, description, favourites }) =>
+        ({ id, name, brand, description, favourite: favourites.length > 0 }));
+}
 
 router.get("/top", async (req, res) => {
     try {
-        const beers = await Beers.findAll({
-            attributes: [
-                "id",
-                "name",
-                "brand",
-                "description"
-            ],
-            limit: 20
-        });
+        const beers = await getBeersWithFavourite(req.session.user_id, 20);
         const topBeers = getRandom(beers, Math.min(3, beers.length));
         res.status(200).json(topBeers);
     } catch (err) {
@@ -22,16 +38,26 @@ router.get("/top", async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+router.post("/favourite", async (req, res) => {
+    try {
+        const userId = req.session.user_id;
+        const beerId = req.body.beerId;
+
+        const favourite = await Favourites.create({
+            user_id: userId,
+            beer_id: beerId,
+        });
+        res.status(200).json(favourite);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err)
+    }
+});
+
 router.get("/all", async (req, res) => {
     try {
-        const getBeers = await Beers.findAll({
-            attributes: [
-                "id",
-                "name",
-                "brand",
-                "description"
-            ],
-        });
+        const getBeers = await getBeersWithFavourite(req.session.user_id, 20);
         res.status(200).json(getBeers);
     } catch (err) {
         console.error(err);
@@ -68,13 +94,12 @@ router.get("/:id", async (req, res) => {
     }
 });
 
-router.post("/newBeer", withAuth, async (req, res) => {
+router.post("/", withAuth, async (req, res) => {
     try {
         const newBeer = await Beers.create({
             name: req.body.name,
             brand: req.body.brand,
             description: req.body.description,
-            user_id: req.session.user_id,
         });
 
         res.status(200).json(newBeer);
@@ -136,7 +161,6 @@ router.delete("/:id", withAuth, async (req, res) => {
         const beerData = await Beers.destroy({
             where: {
                 id: req.params.id,
-                user_id: req.session.user_id,
             },
         });
 

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { topBeers } from '../utils/beerService';
+import BeerCard from '../components/BeerCard';
 
 const styles = {
     // container: {
@@ -38,28 +39,6 @@ const styles = {
     }
 }
 
-const beerCard = ({ name, brand, description }) => {
-    return (
-        <div className="card" style={styles.card}>
-            <div className="cardBody" style={styles.cardBody}>
-                <h4>
-                    {name}
-                </h4>
-                <ul>
-                    <li>Brand: {brand}</li>
-                    <li>Description: {description}</li>
-                </ul>
-            </div>
-            {/* <img
-                src={beer}
-                alt="Beer"
-                className="Img"
-                style={styles.img}
-            ></img> */}
-        </div>
-    )
-}
-
 const Home = () => {
     const [homeBeers, setHomeBeers] = useState([])
     useEffect(() => {
@@ -80,8 +59,13 @@ const Home = () => {
                     </h3>
                 </div>
 
-                { homeBeers.map(beerCard) }
-{/* 
+                {homeBeers.map(beer => <BeerCard
+                    id={beer.id}
+                    name={beer.name}
+                    brand={beer.brand}
+                    description={beer.description}
+                    favourite={beer.favourite} />)}
+                {/* 
                 <div className="card" style={styles.card}>
                     <div className="cardBody" styls={styles.cardBody}>
                         <h4>

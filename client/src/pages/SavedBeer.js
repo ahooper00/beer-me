@@ -1,33 +1,36 @@
 import React, { useState } from 'react';
-import { QUERY_ME } from '../utils/queries';
-import { Card, Button } from 'react-bootstrap';
 
 const SavedBeers = () => {
-    return (<div />)
-    // const [refetchData, setRefetchData] = useState(true);
-    // const [removeBeer, { error }] = useMutation(REMOVE_BEER);
-    // const { data, refetch } = useQuery(QUERY_ME, {
-    //     refetchOnMount: "always",
-    //     force: true,
-    // });
-    // const userData = data?.me || { savedBeers: [] };
 
-    // if (refetchData) {
-    //     setRefetchData(!refetchData);
-    //     refetch();
-    // }
 
-    // const handleDeleteBeer = async (beerId) => {
+    // const handleSaveBook = async (bookId) => {
+    //     // find the book in `searchedBooks` state by the matching id
+    //     const bookToSave = searchedBooks.find((book) => book.bookId === bookId);
+
+    //     // get token
+    //     const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+    //     if (!token) {
+    //         return false;
+    //     }
 
     //     try {
-    //         const { data } = await removeBeer({ variables: { beerId: beerId } });
-    //         removeBeer(beerId)
+    //         const response = await saveBook(bookToSave, token);
 
+    //         if (!response.ok) {
+    //             throw new Error('something went wrong!');
+    //         }
+
+    //         // if book successfully saves to user's account, save book id to state
+    //         setSavedBookIds([...savedBookIds, bookToSave.bookId]);
     //     } catch (err) {
     //         console.error(err);
     //     }
-    //     setRefetchData(true);
     // };
+
+    return (
+
+    )
 };
 
 export default SavedBeers;
