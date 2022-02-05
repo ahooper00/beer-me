@@ -56,21 +56,9 @@ const Beers = () => {
         fetchAllBeers();
     }, []);
 
-    
-// const Home = () => {
-//     const [homeBeers, setHomeBeers] = useState([])
-//     useEffect(() => {
-//         async function fetchTopBeers() {
-//             const response = await topBeers();
-//             console.log(response);
-//             setHomeBeers(response);
-//         }
-//         fetchTopBeers();
-//     }, []);
-
     return (
         <main>
-            <div className="card" style={styles.card}>
+            {/* <div className="card" style={styles.card}>
                 <div className="cardBody" style={styles.cardBody}>
                     <form className="addBeerForm">
                         <div>
@@ -100,7 +88,7 @@ const Beers = () => {
                                 id="description"
                                 aria-describedby="nameHelp"
                             />
-                        </div>
+                        </div> */}
                         <div className='container'>
                             <div>
                                 <h3 style={styles.h3}>
@@ -110,9 +98,9 @@ const Beers = () => {
 
                             {allBeers.map(beerCard)}
                         </div>
-                    </form>
+                    {/* </form>
                 </div>
-            </div>
+            </div> */}
         </main>
     )
 }

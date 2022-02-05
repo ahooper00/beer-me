@@ -74,7 +74,6 @@ router.post("/newBeer", withAuth, async (req, res) => {
             name: req.body.name,
             brand: req.body.brand,
             description: req.body.description,
-            reviews: req.body.reviews,
             user_id: req.session.user_id,
         });
 
@@ -91,7 +90,6 @@ router.put("/:id", withAuth, async (req, res) => {
                 name: req.body.name,
                 brand: req.body.brand,
                 description: req.body.description,
-                reviews: req.body.reviews,
                 user_id: req.session.user_id,
             },
             {
@@ -106,6 +104,28 @@ router.put("/:id", withAuth, async (req, res) => {
             return;
         }
         res.status(200).json(updateBeer);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+router.post("/search", withAuth, async (req, res) => {
+    try {
+        const results = await Beers.findAll({
+            where: {
+                [Op.or]: [
+                    { name: { [Op.like]: `%${req.body.query}%` } },
+                    { brand: { [Op.like]: `%${req.body.query}%` } },
+                ]
+            },
+            attributes: [
+                "id",
+                "name",
+                "brand",
+                "description"
+            ],
+        });
+        res.status(200).json(results);
     } catch (err) {
         res.status(500).json(err);
     }

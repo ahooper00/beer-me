@@ -6,7 +6,7 @@ import Navigation from './components/Navigation';
 import Signup from './components/SignupForm/index';
 import Login from './components/LoginForm/index';
 import Beers from './pages/Beers';
-import Profile from './pages/Profile.js';
+import SearchBeers from './pages/SearchBeers';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
@@ -26,12 +26,8 @@ function App() {
             </Route>
             <Route exact path="/signup" element={<Signup />}>
             </Route>
-            {/* <Route exact path="/me">
-            <Profile />
-          </Route>
-          <Route exact path="/profiles/:username">
-            <Profile />
-          </Route> */}
+            <Route exact path="/search" element={<SearchBeers />}>
+            </Route>
             <Route exact path="/beers" element={<Beers />}>
             </Route>
           </Routes>
