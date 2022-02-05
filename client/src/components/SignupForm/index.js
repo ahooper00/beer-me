@@ -5,7 +5,6 @@ import { signup } from '../../utils/userService';
 const Signup = () => {
     const [formState, setFormState] = useState({
         username: '',
-        dob: '',
         email: '',
         password: '',
     });
@@ -25,7 +24,7 @@ const Signup = () => {
         console.log(formState);
 
         try {
-            await signup(formState.email, formState.dob, formState.username, formState.password);
+            await signup(formState.email, formState.username, formState.password);
             setLoggedIn(true);
         } catch (e) {
             console.error(e);
@@ -51,14 +50,6 @@ const Signup = () => {
                                     name="username"
                                     type="text"
                                     value={formState.name}
-                                    onChange={handleChange}
-                                />
-                                <input
-                                    className="form-input"
-                                    placeholder="Your date of birth"
-                                    name="dob"
-                                    type="date"
-                                    value={formState.dob}
                                     onChange={handleChange}
                                 />
                                 <input

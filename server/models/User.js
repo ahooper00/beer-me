@@ -20,12 +20,6 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    dob: {
-      dob: {
-        type: DataTypes.DATEONLY,
-        allowNull: false,
-      },
-    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,

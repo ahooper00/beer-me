@@ -2,13 +2,21 @@
     {
         "name": "Watermelon Crush",
         "brand": "Stamping Foot",
-        "description": "Watermelon sour beer with tones of hops and fruit",
-        "user_id": "1"
+        "description": "Watermelon sour beer with tones of hops and fruit"
     },
     {
         "name": "Mighty XPA",
         "brand": "Heiblinkin",
-        "description": "Simple beer that's extra pale and extra hoppy",
-        "user_id": "1"
+        "description": "Simple beer that's extra pale and extra hoppy"
+    },
+    {
+        "name": "Kernal IPA",
+        "brand": "Sun Dog",
+        "description": "Full bodied IPA that delivers gentle hints of tropical fruits and gives subtle pine notes"
+    },
+    {
+        "name": "Hakuna Matatart",
+        "brand": "Bright West Brewery",
+        "description": "A crisp, tart ale that's as fresh as a lovely, spring morning, with zesty hints"
     }
 ]

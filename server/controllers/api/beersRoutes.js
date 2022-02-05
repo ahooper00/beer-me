@@ -2,8 +2,27 @@ const router = require("express").Router();
 const { Beers, User } = require("../../models");
 const withAuth = require("../../utils/auth");
 const { Op } = require("sequelize");
+const { getRandom } = require("../../utils/helpers");
 
 router.get("/top", async (req, res) => {
+    try {
+        const beers = await Beers.findAll({
+            attributes: [
+                "id",
+                "name",
+                "brand",
+                "description"
+            ],
+            limit: 20
+        });
+        const topBeers = getRandom(beers, Math.min(3, beers.length));
+        res.status(200).json(topBeers);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json(err);
+    }
+});
+router.get("/all", async (req, res) => {
     try {
         const getBeers = await Beers.findAll({
             attributes: [

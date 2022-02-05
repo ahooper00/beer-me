@@ -9,7 +9,7 @@ const Footer = () => {
         <footer>
             <div>
                 <p className="footer" style={styles.footer}>
-                    Made with love and hops <p>&hearts;</p>
+                    Made with love and hops &hearts;
                 </p>
             </div>
         </footer>

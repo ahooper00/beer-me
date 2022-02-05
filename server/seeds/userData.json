@@ -1,7 +1,6 @@
 [
   {
     "name": "test",
-    "dob": "1997-09-17",
     "email": "test@test.com",
     "password": "testtest"
   }

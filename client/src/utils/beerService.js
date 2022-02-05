@@ -12,7 +12,21 @@ export const topBeers = async () => {
   }
 }
 
-export const addBeer = async ({name, brand, description}) => {
+export const AllBeers = async () => {
+  const response = await fetch("/api/beers/all", {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
+
+  if (response.ok) {
+    return await response.json();
+  } else {
+    console.error(await response.text());
+    alert("Something went wrong :(");
+  }
+}
+
+export const addBeer = async ({ name, brand, description }) => {
   const response = await fetch("/api/beers", {
     method: "POST",
     body: JSON.stringify({
