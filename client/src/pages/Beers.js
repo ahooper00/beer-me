@@ -1,39 +1,31 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import { AllBeers } from '../utils/beerService';
+import { AllBeers, SearchBeers } from '../utils/beerService';
 import BeerCard from '../components/BeerCard/index';
+import AddBeerButton from '../components/AddBeerForm';
 
 const styles = {
-    card: {
-        flex: '1 0 100%',
-        display: 'inline-flex',
-        justifyContent: 'space-between',
-        flexDirection: 'column',
-        flexWrap: 'wrap',
-        border: '2px solid rgb(77, 72, 72)',
-        width: '80%',
-        margin: '20px',
-        padding: '10px',
-        alignSelf: 'center'
-    },
-    cardBody: {
-        flexDirection: 'column',
-        display: 'inline-flex',
-        flexWrap: 'wrap',
-        alignItem: 'center'
+    h3: {
+        borderBottom: 'black solid 2px'
     },
 }
 
 const Beers = () => {
-    const [allBeers, setAllBeers] = useState([])
+    const [beers, setBeers] = useState([])
+    const [searchInput, setSearchInput] = useState("");
+
+    const handleInputChange = (event) => {
+        setSearchInput(event.target.value);
+    }
+
     useEffect(() => {
-        async function fetchAllBeers() {
-            const response = await AllBeers();
+        async function fetchBeers() {
+            const response = !searchInput.trim() ? await AllBeers() : await SearchBeers(searchInput);
             console.log(response);
-            setAllBeers(response);
+            setBeers(response);
         }
-        fetchAllBeers();
-    }, []);
+        fetchBeers();
+    }, [searchInput]);
 
     return (
         <main>
@@ -44,7 +36,17 @@ const Beers = () => {
                     </h3>
                 </div>
 
-                {allBeers.map(beer => <BeerCard
+                <AddBeerButton />
+                <br></br>
+                <input
+                    type="text"
+                    id="header-search"
+                    placeholder="Search"
+                    name="s"
+                    onChange={handleInputChange}
+                />
+
+                {beers.map(beer => <BeerCard
                     id={beer.id}
                     name={beer.name}
                     brand={beer.brand}

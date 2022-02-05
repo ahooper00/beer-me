@@ -20,14 +20,13 @@ router.get("/all", async (req, res) => {
 
 router.post("/newReview", withAuth, async (req, res) => {
     try {
-        const results = await Reviews.findAll({
-            attributes: [
-                "id",
-                "comment",
-            ],
+        const results = await Reviews.create({
+            comment: req.body.comment,
         });
         res.status(200).json(results);
     } catch (err) {
         res.status(500).json(err);
     }
 });
+
+module.exports = router;

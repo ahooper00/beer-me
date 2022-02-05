@@ -66,15 +66,6 @@ const Navigation = ({ currentPage }) => {
                         Beers
                     </a>
                 </li>
-                <li style={styles.li}>
-                    <a style={styles.a}
-                        href="/search"
-                        onClick={() => handlePageClick("Search")}
-                        className={page === "Search" ? "nav-link active" : "nav-link"}
-                    >
-                        Search and Add
-                    </a>
-                </li>
             </ul>
         </div>
     )

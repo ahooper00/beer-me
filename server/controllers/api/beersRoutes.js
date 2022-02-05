@@ -55,6 +55,34 @@ router.post("/favourite", async (req, res) => {
     }
 });
 
+router.get("/favourites", async (req, res) => {
+    try {
+        const beers = await Beers.findAll({
+            attributes: [
+                "id",
+                "name",
+                "brand",
+                "description"
+            ],
+            include: {
+                model: Favourites,
+                required: true,
+                where: {
+                    user_id: {
+                        [Op.eq]: req.session.user_id
+                    }
+                }
+            },
+        });
+        const favouriteBeers = beers.map(({ id, name, brand, description, favourites }) =>
+            ({ id, name, brand, description, favourite: favourites.length > 0 }));
+        res.status(200).json(favouriteBeers);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err)
+    }
+});
+
 router.get("/all", async (req, res) => {
     try {
         const getBeers = await getBeersWithFavourite(req.session.user_id, 20);
