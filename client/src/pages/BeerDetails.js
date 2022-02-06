@@ -1,7 +1,7 @@
 import BeerCard from "../components/BeerCard";
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import { GetReviews, AddReview } from "../utils/reviewService";
+import { GetReviews } from "../utils/reviewService";
 import { GetBeer } from '../utils/beerService';
 import { useParams } from "react-router-dom";
 import AddReviewButton from '../components/AddReviewButton/index';
@@ -20,10 +20,6 @@ const BeerDetails = () => {
         fetchData();
     }, [beerId]);
 
-    // const handleInputChange = (event) => {
-    //     setReviews(event.target.value);
-    // }
-
     if (!beer || !reviews) return <main><div><p>Loading...</p></div></main>
 
     return (
@@ -38,20 +34,27 @@ const BeerDetails = () => {
             </div>
             <AddReviewButton beerId={beerId} />
             <br></br>
-            {/* <input
-                        type="text"
-                        id="header-review"
-                        placeholder="Review"
-                        name="s"
-                        onChange={handleInputChange}
-                    /> */}
             <div>
                 <h4>
                     Reviews
                 </h4>
             </div>
+            {reviews.map(review =>
+                <ul>
+                    <li>{review.comment}</li>
+                    <li>{review.rating}</li>
+                    <li>Created by: {review.user}</li>
+                </ul>
+            )}
         </main>
     )
 }
 
 export default BeerDetails;
+
+// {beers.map(beer => <BeerCard
+//     id={beer.id}
+//     name={beer.name}
+//     brand={beer.brand}
+//     description={beer.description}
+//     favourite={beer.favourite} />)}

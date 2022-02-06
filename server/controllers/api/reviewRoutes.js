@@ -2,10 +2,11 @@ const router = require("express").Router({ mergeParams: true });
 const Reviews = require("../../models/Reviews");
 const withAuth = require("../../utils/auth");
 const { Op } = require("sequelize");
+const { User } = require("../../models");
 
 router.get("/", async (req, res) => {
     try {
-        const review = await Reviews.findAll({
+        const reviews = await Reviews.findAll({
             attributes: [
                 "id",
                 "comment",
@@ -13,9 +14,18 @@ router.get("/", async (req, res) => {
             ],
             where: {
                 beer_id: req.params.id,
+            },
+            include: {
+                model: User,
+                required: true,
+                attributes: [
+                    "name"
+                ]
             }
         });
-        res.status(200).json(review);
+        const reviewsWithUser = reviews.map(({ id, comment, rating, user }) =>
+            ({ id, comment, rating, user: user.name }))
+        res.status(200).json(reviewsWithUser);
     } catch (err) {
         console.error(err);
         res.status(500).json(err);

@@ -11,7 +11,7 @@ const styles = {
 }
 
 const Beers = () => {
-    const [beers, setBeers] = useState([])
+    const [beers, setBeers] = useState([]);
     const [searchInput, setSearchInput] = useState("");
 
     const handleInputChange = (event) => {

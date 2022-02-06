@@ -3,8 +3,10 @@ const Favourites = require('./Favourites');
 const Beers = require('./Beers');
 const Reviews = require('./Reviews');
 
-User.hasMany(Beers);
+Beers.belongsTo(User);
+User.hasMany(Favourites);
 Beers.hasMany(Favourites);
-Beers.hasMany(Reviews);
+Reviews.belongsTo(Beers);
+Reviews.belongsTo(User);
 
 module.exports = { User, Beers, Reviews, Favourites };
