@@ -8,6 +8,11 @@ const styles = {
     h3: {
         borderBottom: 'black solid 2px'
     },
+    input: {
+        display: 'block',
+        margin: '0 auto',
+        width: '40%'
+    }
 }
 
 const Beers = () => {
@@ -37,8 +42,8 @@ const Beers = () => {
                 </div>
 
                 <AddBeerButton />
-                <br></br>
                 <input
+                    style={styles.input}
                     type="text"
                     id="header-search"
                     placeholder="Search"

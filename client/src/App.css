@@ -1,6 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+* {
+  font-family: 'Varela Round';
+  line-height: 2;
+}
+
 body {
   min-height: 100%;
   line-height: 1;
-  background-image: url('./assets/plant-background.jpeg');
   background-size: auto;
 }

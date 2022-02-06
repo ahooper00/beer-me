@@ -22,6 +22,11 @@ const styles = {
         fontWeight: 'bold',
         fontSize: '20px',
         color: '#381f1e'
+    },
+    header: {
+        width: '100%',
+        backgroundColor: '#D8E2DC',
+        padding: '20px'
     }
 }
 
@@ -41,10 +46,10 @@ const Header = () => {
             : <Link style={styles.a} to="/login">Login</Link>;
 
     return (
-        <header className="mb-4 py-3 display-flex align-center">
+        <header style={styles.header}>
             <div className="header-container">
                 <h1 className="m-0" style={styles.h1}>
-                    Let's get hopping
+                    Let's Get Hopping
                 </h1>
                 <div>
                     {loginElement}

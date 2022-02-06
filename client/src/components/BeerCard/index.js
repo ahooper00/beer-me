@@ -12,10 +12,11 @@ const styles = {
         flexDirection: 'column',
         flexWrap: 'wrap',
         border: '2px solid rgb(77, 72, 72)',
-        width: '80%',
+        width: '25%',
         margin: '20px',
         padding: '10px',
-        alignSelf: 'center'
+        alignSelf: 'center',
+        backgroundColor: "#F8EDEB"
     },
     cardBody: {
         flexDirection: 'column',
@@ -23,6 +24,11 @@ const styles = {
         flexWrap: 'wrap',
         alignItem: 'center'
     },
+    ul: {
+        listStyleType: 'none',
+        padding: '0',
+        margin: '0'
+    }
 }
 
 const BeerCard = ({ id, name, brand, description, favourite }) => {
@@ -56,9 +62,9 @@ const BeerCard = ({ id, name, brand, description, favourite }) => {
                 <h4>
                     <Link to={`/beer/${id}`}>{name}</Link>
                 </h4>
-                <ul>
-                    <li>Brand: {brand}</li>
-                    <li>Description: {description}</li>
+                <ul style={styles.ul}>
+                    <li><u><strong>Brand:</strong></u> {brand}</li>
+                    <li><u><strong>Description:</strong></u> {description}</li>
                 </ul>
             </div>
         </div >
