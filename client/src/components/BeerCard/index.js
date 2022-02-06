@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useState } from 'react';
-import { FavouriteBeer } from '../../utils/beerService';
+import { FavouriteBeer, UnfavouriteBeer } from '../../utils/beerService';
 import { Link } from 'react-router-dom';
 
 
@@ -36,10 +36,19 @@ const BeerCard = ({ id, name, brand, description, favourite }) => {
             console.log(err)
         };
     }
+
+    const handleUnfavouriteClick = async (event) => {
+        try {
+            await UnfavouriteBeer(id);
+            setIsFavourite(false);
+        } catch (err) {
+            console.log(err)
+        };
+    }
     return (
         <div className="card" style={styles.card}>
             {isFavourite
-                ? <p>Favourited!</p>
+                ? <button onClick={handleUnfavouriteClick}>Favourited!</button>
                 : <button onClick={handleFavouriteClick}>
                     Favourite
                 </button>}
@@ -52,12 +61,6 @@ const BeerCard = ({ id, name, brand, description, favourite }) => {
                     <li>Description: {description}</li>
                 </ul>
             </div>
-            {/* <img
-                src={beer}
-                alt="Beer"
-                className="Img"
-                style={styles.img}
-            ></img> */}
         </div >
     )
 }

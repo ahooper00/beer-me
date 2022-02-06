@@ -107,6 +107,28 @@ router.get("/favourites", async (req, res) => {
     }
 });
 
+router.post("/unfavourite", async (req, res) => {
+    try {
+        const userId = req.session.user_id;
+        const beerId = req.body.beerId;
+
+        const favourite = await Favourites.destroy({
+            where: {
+                user_id: userId,
+                beer_id: beerId,
+            }
+        });
+        if (!favourite) {
+            res.status(404).json({ message: "No beer found with this id!" });
+            return;
+        }
+        res.status(200).json(favourite);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err)
+    }
+})
+
 router.get("/all", async (req, res) => {
     try {
         const beers = await getBeers(req.session.user_id, 20);

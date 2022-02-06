@@ -72,6 +72,9 @@ const Login = (props) => {
                                 </button>
                             </form>
                         )}
+                        <h6>
+                            Don't have an account? Sign up <button><Link to='/signup'>HERE</Link></button>
+                        </h6>
                     </div>
                 </div>
             </div>

@@ -78,6 +78,22 @@ export const FavouriteBeer = async (beerId) => {
   }
 }
 
+export const UnfavouriteBeer = async (beerId) => {
+  const response = await fetch("/api/beers/unfavourite", {
+    method: "POST",
+    body: JSON.stringify({
+      beerId
+    }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (!response.ok) {
+    alert("Failed to save your beer!");
+  }
+}
+
 export const GetFavouriteBeers = async () => {
   const response = await fetch("/api/beers/favourites", {
     method: "GET",
