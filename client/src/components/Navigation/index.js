@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { checkLoggedIn } from '../../utils/userService';
+import '../../index.css';
 
 const styles = {
     navdiv: {
@@ -16,13 +17,13 @@ const styles = {
     },
     a: {
         textDecoration: 'none',
-        margin: '0 20px'
+        margin: '0 20px',
+        color: '#028090'
     },
     li: {
         textDecoration: 'none',
         fontWeight: 'bold',
-        fontSize: '20px',
-        color: '#381f1e'
+        fontSize: '20px'
     }
 }
 

@@ -28,6 +28,9 @@ const styles = {
         listStyleType: 'none',
         padding: '0',
         margin: '0'
+    },
+    h4: {
+        color: '#028090'
     }
 }
 
@@ -60,7 +63,7 @@ const BeerCard = ({ id, name, brand, description, favourite }) => {
                 </button>}
             <div className="cardBody" style={styles.cardBody}>
                 <h4>
-                    <Link to={`/beer/${id}`}>{name}</Link>
+                    <Link to={`/beer/${id}`} style={styles.h4}>{name}</Link>
                 </h4>
                 <ul style={styles.ul}>
                     <li><u><strong>Brand:</strong></u> {brand}</li>
