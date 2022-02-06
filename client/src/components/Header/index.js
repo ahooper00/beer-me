@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import LoginForm from '../../pages/Login';
+import { Link } from 'react-router-dom';
+import { checkLoggedIn } from '../../utils/userService';
 
 const styles = {
     h1: {
@@ -23,16 +26,21 @@ const styles = {
     }
 }
 
-const Header = ({ currentPage }) => {
-    const [setToggleMenu] = useState(false);
+const Header = () => {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
+    useEffect(() => {
+        checkLoggedIn().then(loggedIn => {
+            setIsLoggedIn(loggedIn);
+            setIsLoading(false);
+        });
+    });
 
-    const [page, changePage] = useState(currentPage);
+    const loginElement = isLoading ? null
+        : isLoggedIn
+            ? <Link style={styles.a} to="/logout">Logout</Link>
+            : <Link style={styles.a} to="/login">Login</Link>;
 
-
-    const handlePageClick = (newPage) => {
-        setToggleMenu(false);
-        changePage(newPage);
-    }
     return (
         <header className="mb-4 py-3 display-flex align-center">
             <div className="header-container">
@@ -40,17 +48,7 @@ const Header = ({ currentPage }) => {
                     Let's get hopping
                 </h1>
                 <div>
-                    <ul style={styles.ul}>
-                        <li style={styles.li}>
-                            <a style={styles.a}
-                                href="/logout"
-                                onClick={() => handlePageClick("Logout")}
-                                className={page === "Logout" ? "nav-link active" : "nav-link"}
-                            >
-                                Logout
-                            </a>
-                        </li>
-                    </ul>
+                    {loginElement}
                 </div>
             </div>
         </header>

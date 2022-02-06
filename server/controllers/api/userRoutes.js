@@ -58,6 +58,10 @@ router.post("/login", async (req, res) => {
   }
 });
 
+router.get("/loggedin", async (req, res) => {
+  return res.status(200).json({ loggedIn: req.session.logged_in });
+})
+
 router.post("/logout", async (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {

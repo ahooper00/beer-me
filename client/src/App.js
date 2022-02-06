@@ -1,15 +1,16 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom';
 
 import Home from './pages/Home';
 import Navigation from './components/Navigation';
 import Signup from './components/SignupForm/index';
-import Login from './components/LoginForm/index';
+import Login from './pages/Login';
 import Beers from './pages/Beers';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Favourites from './pages/Favourites';
 import BeerDetails from './pages/BeerDetails';
+import Logout from './pages/Logout';
 
 function App() {
   return (
@@ -21,18 +22,14 @@ function App() {
         </div>
         <div className="container">
           <Routes>
-            <Route exact path="/home" element={<Home />}>
-            </Route>
-            <Route exact path="/login" element={<Login />}>
-            </Route>
-            <Route exact path="/signup" element={<Signup />}>
-            </Route>
-            <Route exact path="/beers" element={<Beers />}>
-            </Route>
-            <Route exact path="/favourites" element={<Favourites />}>
-            </Route>
-            <Route exact path="/beer/:id" element={<BeerDetails />}>
-            </Route>
+            <Route exact path="/" element={<Navigate to="/home" />} />
+            <Route exact path="/home" element={<Home />} />
+            <Route exact path="/login" element={<Login />} />
+            <Route exact path="/logout" element={<Logout />} />
+            <Route exact path="/signup" element={<Signup />} />
+            <Route exact path="/beers" element={<Beers />} />
+            <Route exact path="/favourites" element={<Favourites />} />
+            <Route exact path="/beer/:id" element={<BeerDetails />} />
           </Routes>
         </div>
         <Footer />

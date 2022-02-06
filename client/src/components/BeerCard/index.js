@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { FavouriteBeer } from '../../utils/beerService';
+import { Link } from 'react-router-dom';
 
 
 const styles = {
@@ -44,7 +45,7 @@ const BeerCard = ({ id, name, brand, description, favourite }) => {
                 </button>}
             <div className="cardBody" style={styles.cardBody}>
                 <h4>
-                    {name}
+                    <Link to={`/beer/${id}`}>{name}</Link>
                 </h4>
                 <ul>
                     <li>Brand: {brand}</li>
@@ -57,7 +58,7 @@ const BeerCard = ({ id, name, brand, description, favourite }) => {
                 className="Img"
                 style={styles.img}
             ></img> */}
-        </div>
+        </div >
     )
 }
 
