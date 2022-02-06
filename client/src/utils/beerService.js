@@ -91,3 +91,17 @@ export const GetFavouriteBeers = async () => {
     alert("Something went wrong :(");
   }
 }
+
+export const GetBeer = async (beerId) => {
+  const response = await fetch(`/api/beers/${beerId}`, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
+
+  if (response.ok) {
+    return await response.json();
+  } else {
+    console.error(await response.text());
+    alert("Something went wrong :(");
+  }
+}

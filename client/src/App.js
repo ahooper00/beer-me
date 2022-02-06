@@ -9,6 +9,7 @@ import Beers from './pages/Beers';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Favourites from './pages/Favourites';
+import BeerDetails from './pages/BeerDetails';
 
 function App() {
   return (
@@ -29,6 +30,8 @@ function App() {
             <Route exact path="/beers" element={<Beers />}>
             </Route>
             <Route exact path="/favourites" element={<Favourites />}>
+            </Route>
+            <Route exact path="/beer/:id" element={<BeerDetails />}>
             </Route>
           </Routes>
         </div>

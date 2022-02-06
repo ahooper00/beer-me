@@ -1,15 +1,19 @@
-const router = require("express").Router();
-const { Reviews } = require("../../models");
+const router = require("express").Router({ mergeParams: true });
+const Reviews = require("../../models/Reviews");
 const withAuth = require("../../utils/auth");
 const { Op } = require("sequelize");
 
-router.get("/all", async (req, res) => {
+router.get("/", async (req, res) => {
     try {
         const review = await Reviews.findAll({
             attributes: [
                 "id",
-                "comment"
+                "comment",
+                "rating",
             ],
+            where: {
+                beer_id: req.params.id,
+            }
         });
         res.status(200).json(review);
     } catch (err) {
@@ -18,12 +22,21 @@ router.get("/all", async (req, res) => {
     }
 });
 
-router.post("/newReview", withAuth, async (req, res) => {
+router.post("/", withAuth, async (req, res) => {
+    console.log(JSON.stringify({
+        comment: req.body.comment,
+        rating: req.body.rating,
+        user_id: req.session.user_id,
+        beer_id: req.params.id,
+    }))
     try {
-        const results = await Reviews.create({
+        await Reviews.create({
             comment: req.body.comment,
+            rating: req.body.rating,
+            user_id: req.session.user_id,
+            beer_id: req.params.id,
         });
-        res.status(200).json(results);
+        res.status(200).json();
     } catch (err) {
         res.status(500).json(err);
     }

@@ -4,8 +4,9 @@ const withAuth = require("../../utils/auth");
 const { Op } = require("sequelize");
 const { getRandom } = require("../../utils/helpers");
 const Favourites = require("../../models/Favourites");
+const reviewRoutes = require('./reviewRoutes');
 
-const getBeersWithFavourite = async (userId, limit) => {
+const getBeers = async (userId, limit) => {
     const beers = await Beers.findAll({
         attributes: [
             "id",
@@ -28,9 +29,32 @@ const getBeersWithFavourite = async (userId, limit) => {
         ({ id, name, brand, description, favourite: favourites.length > 0 }));
 }
 
+const getBeer = async (userId, beerId) => {
+    const beer = await Beers.findByPk(beerId, {
+        attributes: [
+            "id",
+            "name",
+            "brand",
+            "description"
+        ],
+        include: {
+            model: Favourites,
+            required: false,
+            where: {
+                user_id: {
+                    [Op.eq]: userId
+                }
+            }
+        }
+    });
+    if (!beer) return;
+    const { id, name, brand, description, favourites } = beer;
+    return { id, name, brand, description, favourite: favourites.length > 0 };
+}
+
 router.get("/top", async (req, res) => {
     try {
-        const beers = await getBeersWithFavourite(req.session.user_id, 20);
+        const beers = await getBeers(req.session.user_id, 20);
         const topBeers = getRandom(beers, Math.min(3, beers.length));
         res.status(200).json(topBeers);
     } catch (err) {
@@ -85,38 +109,22 @@ router.get("/favourites", async (req, res) => {
 
 router.get("/all", async (req, res) => {
     try {
-        const getBeers = await getBeersWithFavourite(req.session.user_id, 20);
-        res.status(200).json(getBeers);
+        const beers = await getBeers(req.session.user_id, 20);
+        res.status(200).json(beers);
     } catch (err) {
         console.error(err);
         res.status(500).json(err);
     }
 });
 
-router.get("/:user_id", withAuth, async (req, res) => {
-    try {
-        const getBeersByUser = await Beers.findAll(req.params.user_id, {
-            include: [{ model: User }],
-        });
-        if (!getBeersByUser) {
-            res.status(400).json({ message: "No Beers Found" });
-            return;
-        }
-        res.status(200).json(getBeersByUser);
-    } catch (err) {
-        res.status(500).json(err);
-    }
-});
-
 router.get("/:id", async (req, res) => {
     try {
-        const findOneBeer = await Beers.findByPk(req.params.id, {
-        });
-        if (!findOneBeer) {
-            res.status(400).json({ message: "No beer found with that id" });
+        const beer = await getBeer(req.session.user_id, req.params.id);
+        if (!beer) {
+            res.status(404).json({ message: "No beer found with that id" });
             return;
         }
-        res.status(200).json(findOneBeer);
+        res.status(200).json(beer);
     } catch (err) {
         res.status(500).json(err);
     }
@@ -136,31 +144,31 @@ router.post("/", withAuth, async (req, res) => {
     }
 });
 
-router.put("/:id", withAuth, async (req, res) => {
-    try {
-        const updateBeer = await Beers.update(
-            {
-                name: req.body.name,
-                brand: req.body.brand,
-                description: req.body.description,
-                user_id: req.session.user_id,
-            },
-            {
-                where: {
-                    id: req.params.id,
-                },
-            }
-        );
+// router.put("/:id", withAuth, async (req, res) => {
+//     try {
+//         const updateBeer = await Beers.update(
+//             {
+//                 name: req.body.name,
+//                 brand: req.body.brand,
+//                 description: req.body.description,
+//                 user_id: req.session.user_id,
+//             },
+//             {
+//                 where: {
+//                     id: req.params.id,
+//                 },
+//             }
+//         );
 
-        if (!updateBeer) {
-            res.status(400).json({ message: "No beer found with that id" });
-            return;
-        }
-        res.status(200).json(updateBeer);
-    } catch (err) {
-        res.status(500).json(err);
-    }
-});
+//         if (!updateBeer) {
+//             res.status(400).json({ message: "No beer found with that id" });
+//             return;
+//         }
+//         res.status(200).json(updateBeer);
+//     } catch (err) {
+//         res.status(500).json(err);
+//     }
+// });
 
 router.post("/search", withAuth, async (req, res) => {
     try {
@@ -202,5 +210,7 @@ router.delete("/:id", withAuth, async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+router.use('/:id/reviews', reviewRoutes);
 
 module.exports = router;
