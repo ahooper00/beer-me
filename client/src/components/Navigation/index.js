@@ -13,7 +13,9 @@ const styles = {
         listStyleType: 'none',
         display: 'flex',
         justifyContent: 'center',
-        fontFamily: "'Courier New', Courier, monospace"
+        fontFamily: "'Courier New', Courier, monospace",
+        padding: '0',
+        margin: '0'
     },
     a: {
         textDecoration: 'none',

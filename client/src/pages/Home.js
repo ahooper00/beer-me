@@ -42,22 +42,37 @@ const Home = () => {
                     favourite={beer.favourite} />)}
             </div>
 
-            <div>
+            <div className='container'>
                 <div>
-                    <h3>
+                    <h3 style={styles.h3}>
                         Some of our Favourites
                     </h3>
                 </div>
-                <div>
-                    <h5>
-                        Stomping Ground Brewery
-                    </h5>
-                    <h5>
-                        Mountain Goat Brewery
-                    </h5>
-                    <h5>
-                        Moon Dog Brewery
-                    </h5>
+                <div className="row">
+                    <div className="col-lg-4 col-md-6 col-sm-12">
+                        <h5>
+                            Stomping Ground Brewery
+                        </h5>
+                        <p>
+                            100 Gipps St, Collingwood 3066
+                        </p>
+                    </div>
+                    <div className="col-lg-4 col-md-6 col-sm-12">
+                        <h5>
+                            Mountain Goat Brewery
+                        </h5>
+                        <p>
+                            100 Gipps St, Collingwood 3066
+                        </p>
+                    </div>
+                    <div className="col-lg-4 col-md-6 col-sm-12">
+                        <h5>
+                            Moon Dog Brewery
+                        </h5>
+                        <p>
+                            100 Gipps St, Collingwood 3066
+                        </p>
+                    </div>
                 </div>
             </div>
         </main >

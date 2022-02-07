@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { AddReview } from '../../utils/reviewService';
+import '../../App.css';
 
 const AddReviewButton = ({beerId}) => {
     const [showForm, setShowForm] = useState(false);
@@ -8,7 +9,7 @@ const AddReviewButton = ({beerId}) => {
             {
                 showForm
                     ? (<AddReviewForm beerId={beerId} onSubmit={() => setShowForm(false)} />)
-                    : <button onClick={() => setShowForm(true)}>Add Review</button>
+                    : <button className="addReviewButton" onClick={() => setShowForm(true)}>Add Review</button>
             }
         </div>)
 }

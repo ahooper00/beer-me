@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
 
 * {
-  font-family: 'Varela Round';
+  font-family: 'Varela Round', sans-serif;
   line-height: 2;
 }
 
@@ -9,4 +9,29 @@ body {
   min-height: 100%;
   line-height: 1;
   background-size: auto;
+}
+
+.addReviewButton:hover {
+  background-color: #f88a3b;
+}
+
+.addReviewButton {
+  width: 10%;
+  border-radius: 20px;
+  border: 2px solid #D8E2DC;
+  background-color: #FFD7BA;
+  transition-duration: 0.5s;
+  }
+
+.favouriteButton {
+  background-color: #FEC5BB;
+  border-color: #FFD7BA;
+  border-radius: 20px;
+  width: 30%;
+  font-size: 12px;
+  float: right;
+}
+
+.favouriteButton:hover {
+  background-color: #FFD7BA;
 }

@@ -3,25 +3,23 @@ import { useState } from 'react';
 import { FavouriteBeer, UnfavouriteBeer } from '../../utils/beerService';
 import { Link } from 'react-router-dom';
 
-
 const styles = {
     card: {
         flex: '1 0 100%',
         display: 'inline-flex',
         justifyContent: 'space-between',
         flexDirection: 'column',
-        flexWrap: 'wrap',
+        flexWrap: "wrap",
         border: '2px solid rgb(77, 72, 72)',
-        width: '25%',
+        width: '300px',
         margin: '20px',
         padding: '10px',
         alignSelf: 'center',
-        backgroundColor: "#F8EDEB"
+        backgroundColor: "#edf6f9",
     },
     cardBody: {
         flexDirection: 'column',
         display: 'inline-flex',
-        flexWrap: 'wrap',
         alignItem: 'center'
     },
     ul: {
@@ -30,7 +28,8 @@ const styles = {
         margin: '0'
     },
     h4: {
-        color: '#028090'
+        color: '#540b0e',
+        textDecoration: 'underline'
     }
 }
 
@@ -56,11 +55,11 @@ const BeerCard = ({ id, name, brand, description, favourite }) => {
     }
     return (
         <div className="card" style={styles.card}>
-            {isFavourite
-                ? <button onClick={handleUnfavouriteClick}>Favourited!</button>
-                : <button onClick={handleFavouriteClick}>
-                    Favourite
-                </button>}
+                {isFavourite
+                    ? <button className="favouriteButton" onClick={handleUnfavouriteClick}>Favourited!</button>
+                    : <button className="favouriteButton" onClick={handleFavouriteClick}>
+                        Favourite
+                    </button>}
             <div className="cardBody" style={styles.cardBody}>
                 <h4>
                     <Link to={`/beer/${id}`} style={styles.h4}>{name}</Link>

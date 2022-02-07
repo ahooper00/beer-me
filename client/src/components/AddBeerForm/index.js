@@ -24,13 +24,14 @@ const styles = {
 
 const AddBeerButton = () => {
     const [showForm, setShowForm] = useState(false);
-    return (<div>
-        {
-            showForm
-                ? (<AddBeerForm onSubmit={() => setShowForm(false)} />)
-                : <button onClick={() => setShowForm(true)}>Add Beer</button>
-        }
-    </div>)
+    return (
+        <div>
+            {
+                showForm
+                    ? (<AddBeerForm onSubmit={() => setShowForm(false)} />)
+                    : <button className="addReviewButton" onClick={() => setShowForm(true)}>Add Beer</button>
+            }
+        </div>)
 }
 
 const AddBeerForm = ({ onSubmit }) => {

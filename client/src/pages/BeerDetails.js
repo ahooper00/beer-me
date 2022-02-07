@@ -24,7 +24,10 @@ const BeerDetails = () => {
 
     return (
         <main>
-            <div>
+            <div className="text-center">
+                <AddReviewButton beerId={beerId} />
+            </div>
+            <div className="text-center">
                 <BeerCard
                     id={beer.id}
                     name={beer.name}
@@ -32,7 +35,6 @@ const BeerDetails = () => {
                     description={beer.description}
                     favourite={beer.favourite} />
             </div>
-            <AddReviewButton beerId={beerId} />
             <br></br>
             <div>
                 <h4>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { checkLoggedIn } from '../../utils/userService';
-
+import beerImage from '../../assets/beer-glasses.png'
 const styles = {
     h1: {
         fontSize: '3rem',
@@ -25,8 +25,12 @@ const styles = {
     },
     header: {
         width: '100%',
-        backgroundColor: '#D8E2DC',
+        backgroundColor: '#F8F8F8',
         padding: '20px'
+    },
+    img: {
+        width: '100px',
+        height: 'auto'
     }
 }
 
@@ -49,7 +53,7 @@ const Header = () => {
         <header style={styles.header}>
             <div className="header-container">
                 <h1 className="m-0" style={styles.h1}>
-                    Let's Get Hopping
+                    Let's Get Hopping <img src={beerImage} style={styles.img} alt="Logo" />
                 </h1>
                 <div>
                     {loginElement}
