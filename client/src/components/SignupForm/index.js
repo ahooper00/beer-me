@@ -2,13 +2,22 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { signup } from '../../utils/userService';
 import beerBarrels from '../../assets/beer-barrels.jpeg.crdownload';
+import '../../App.css';
 
 const styles = {
     img: {
         width: '600px',
         float: 'right',
         paddingLeft: '40px'
-    }
+    },
+    loginButton: {
+        backgroundColor: '#FEC5BB',
+        borderColor: '#FFD7BA',
+        borderRadius: '20px',
+        width: '20%',
+        fontSize: '16px',
+        color: 'black'
+      }
 }
 
 const Signup = () => {
@@ -42,7 +51,7 @@ const Signup = () => {
 
     return (
         <main>
-            <div>
+            <div className="signup-container d-inline-flex flex-wrap flex-lg-row">
                 <div className="card">
                     <h4 className="card-header bg-dark text-light">Sign Up</h4>
                     <div className="card-body">
@@ -53,7 +62,7 @@ const Signup = () => {
                             </p>
                         ) : (
                             <form onSubmit={handleFormSubmit}>
-                                <div>
+                                <div className="col">
                                     <input
                                         className="form-input"
                                         placeholder="Your username"
@@ -81,7 +90,7 @@ const Signup = () => {
                                 </div>
                                 <div>
                                     <button
-                                        className="btn btn-block btn-primary"
+                                        className="btn"
                                         style={{ cursor: 'pointer' }}
                                         type="submit"
                                     >
@@ -91,14 +100,14 @@ const Signup = () => {
                             </form>
                         )}
                         <h6>
-                            Already have an account? Log in <button className="loginButton"><Link to='/login'>HERE</Link></button>
+                            Already have an account? Log in <button className="loginButton" style={styles.loginButton}><Link to='/login'>HERE</Link></button>
                         </h6>
                     </div>
                 </div>
                 <div>
                     <img
                         src={beerBarrels}
-                        className="d-inline-flex flex-lg-row img-fluid flex-wrap "
+                        className="d-inline-flex flex-lg-row img-fluid flex-wrap"
                         style={styles.img}
                         alt="Logo" />
                 </div>

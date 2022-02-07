@@ -95,7 +95,7 @@ const Login = (props) => {
                 <div>
                     <img
                         src={beerBarrels}
-                        className="d-inline-flex flex-lg-row img-fluid flex-wrap "
+                        className="d-inline-flex flex-lg-row img-fluid flex-wrap"
                         style={styles.img}
                         alt="Logo" />
                 </div>
