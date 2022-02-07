@@ -20,7 +20,8 @@ const sess = {
   }),
 };
 
-app.use(express.static(path.join(__dirname, "../client/build")));
+const publicPath = path.join(__dirname, "../client/build");
+app.use(express.static(publicPath));
 
 app.use(session(sess));
 
@@ -28,6 +29,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(routes);
+
+app.use('*', express.static(publicPath));
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Now listening on ${PORT}`));
