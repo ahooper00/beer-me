@@ -62,7 +62,7 @@ const Home = () => {
                             Mountain Goat Brewery
                         </h5>
                         <p>
-                            100 Gipps St, Collingwood 3066
+                            80 North St, Richmond 3121
                         </p>
                     </div>
                     <div className="col-lg-4 col-md-6 col-sm-12">
@@ -70,7 +70,7 @@ const Home = () => {
                             Moon Dog Brewery
                         </h5>
                         <p>
-                            100 Gipps St, Collingwood 3066
+                            17 Duke St, Abbotsford 3067
                         </p>
                     </div>
                 </div>
