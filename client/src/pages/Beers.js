@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { AllBeers, SearchBeers } from '../utils/beerService';
 import BeerCard from '../components/BeerCard/index';
 import AddBeerButton from '../components/AddBeerForm';
+import { QUERY_BEERS, QUERY_SEARCH_BEERS } from '../utils/queries';
+import { useQuery } from '@apollo/react-hooks';
 
 const styles = {
     h3: {

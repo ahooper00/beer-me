@@ -1,30 +1,20 @@
-export const GetReviews = async (beerId) => {
-    const response = await fetch(`/api/beers/${beerId}/reviews`, {
-        method: "GET",
-        headers: { "Content-Type": "application/json" },
-    });
 
-    if (response.ok) {
-        return await response.json();
-    } else {
-        console.error(await response.text());
-        alert("Something went wrong :(");
-    }
+import { QUERY_REVIEWS } from './queries';
+import { ADD_REVIEW } from './mutations';
+import client from './client';
+
+export const GetReviews = async (beerId) => {
+    const { data } = await client.query({
+        query: QUERY_REVIEWS,
+        variables: { beerId }
+    });
+    return data.reviews;
 }
 
 export const AddReview = async ({ beerId, comment, rating }) => {
-    const response = await fetch(`/api/beers/${beerId}/reviews`, {
-        method: "POST",
-        body: JSON.stringify({
-            comment,
-            rating
-        }),
-        headers: {
-            "Content-Type": "application/json",
-        },
+    const { data, errors } = await client.mutate({
+        mutation: ADD_REVIEW,
+        variables: { beerId, comment, rating: Number(rating) }
     });
-
-    if (!response.ok) {
-        alert("Could not add your review");
-    }
+    if(errors) console.error(errors) ;
 }

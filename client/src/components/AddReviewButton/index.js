@@ -17,7 +17,7 @@ const AddReviewButton = ({beerId}) => {
 const AddReviewForm = ({ onSubmit, beerId }) => {
     const [formState, setFormState] = useState({
         comment: '',
-        rating: '',
+        rating: 0,
     });
 
     const handleChange = (event) => {

@@ -1,7 +1,9 @@
 const path = require("path");
 const express = require("express");
 const session = require("express-session");
-const routes = require("./controllers");
+const { ApolloServer } = require('apollo-server-express');
+const { typeDefs, resolvers } = require('./schemas');
+const { authMiddleware } = require('./utils/auth');
 
 const sequelize = require("./config/connection");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
@@ -20,18 +22,22 @@ const sess = {
   }),
 };
 
-const publicPath = path.join(__dirname, "../client/build");
-app.use(express.static(publicPath));
-
-app.use(session(sess));
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-app.use(routes);
-
-app.use('*', express.static(publicPath));
-
-sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log(`Now listening on ${PORT}`));
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  context: authMiddleware,
+  introspection: true,
+  playground: true,
 });
+server.start().then(_ => {
+  server.applyMiddleware({ app });
+  const publicPath = path.join(__dirname, "../client/build");
+  app.use(express.static(publicPath));
+
+  app.use('*', express.static(publicPath));
+
+  app.listen(PORT, () => {
+    console.log(`API server running on port ${PORT}!`);
+    console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
+  });
+})

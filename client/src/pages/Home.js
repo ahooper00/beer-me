@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { topBeers } from '../utils/beerService';
 import BeerCard from '../components/BeerCard';
+import { useQuery } from '@apollo/react-hooks';
+import { QUERY_BEERS } from '../utils/queries';
 
 const styles = {
     h3: {

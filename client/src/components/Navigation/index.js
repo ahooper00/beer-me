@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { checkLoggedIn } from '../../utils/userService';
 import '../../index.css';
+import Auth from '../../utils/auth';
 
 const styles = {
     navdiv: {
@@ -41,17 +41,7 @@ const Navigation = ({ currentPage }) => {
         changePage(newPage);
     }
 
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [isLoading, setIsLoading] = useState(true);
-    useEffect(() => {
-        checkLoggedIn().then(loggedIn => {
-            setIsLoggedIn(loggedIn);
-            setIsLoading(false);
-        });
-    });
-
-    const favouriteElement = isLoading ? null
-        : isLoggedIn
+    const favouriteElement = Auth.loggedIn()
             ? <li style={styles.li}>
                 <a style={styles.a}
                     href="/favourites"

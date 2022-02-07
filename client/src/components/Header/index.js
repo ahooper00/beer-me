@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { checkLoggedIn } from '../../utils/userService';
 import beerImage from '../../assets/beer-glasses.png'
+import auth from '../../utils/auth';
 const styles = {
     h1: {
         fontSize: '3rem',
@@ -35,17 +35,7 @@ const styles = {
 }
 
 const Header = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [isLoading, setIsLoading] = useState(true);
-    useEffect(() => {
-        checkLoggedIn().then(loggedIn => {
-            setIsLoggedIn(loggedIn);
-            setIsLoading(false);
-        });
-    });
-
-    const loginElement = isLoading ? null
-        : isLoggedIn
+    const loginElement = auth.loggedIn()
             ? <Link style={styles.a} to="/logout">Logout</Link>
             : <Link style={styles.a} to="/login">Login</Link>;
 

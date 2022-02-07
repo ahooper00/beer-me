@@ -1,123 +1,67 @@
-export const topBeers = async () => {
-  const response = await fetch("/api/beers/top", {
-    method: "GET",
-    headers: { "Content-Type": "application/json" },
-  });
+import { QUERY_SEARCH_BEERS, QUERY_BEERS, QUERY_TOP_BEERS, GET_BEER, QUERY_FAVOURITES } from './queries';
+import { ADD_BEER, ADD_FAVOURITE, REMOVE_FAVOURITE } from './mutations';
+import client from './client';
 
-  if (response.ok) {
-    return await response.json();
-  } else {
-    console.error(await response.text());
-    alert("Something went wrong :(");
-  }
+export const topBeers = async () => {
+  const {error, data } = await client.query({
+    query: QUERY_TOP_BEERS,
+  });
+  if (error) alert("Something went wrong");
+  return data.topBeers;
 }
 
 export const AllBeers = async () => {
-  const response = await fetch("/api/beers/all", {
-    method: "GET",
-    headers: { "Content-Type": "application/json" },
+  const { data, error } = await client.query({
+    query: QUERY_BEERS,
   });
-
-  if (response.ok) {
-    return await response.json();
-  } else {
-    console.error(await response.text());
-    alert("Something went wrong :(");
-  }
+  if (error) alert("Something went wrong");
+  return data.beers;
 }
 
 export const AddBeer = async ({ name, brand, description }) => {
-  const response = await fetch("/api/beers", {
-    method: "POST",
-    body: JSON.stringify({
-      name,
-      brand,
-      description
-    }),
-    headers: {
-      "Content-Type": "application/json",
-    },
+  const { data, error } = await client.mutate({
+    mutation: ADD_BEER,
+    variables: { name, brand, description }
   });
-
-  if (response.ok) {
-    document.location.replace("/beers");
-  } else {
-    alert("Failed to add your beer!");
-  }
+  return data;
 }
 
 export const SearchBeers = async (query) => {
-  const response = await fetch("/api/beers/search", {
-    method: "POST",
-    body: JSON.stringify({ query }),
-    headers: {
-      "Content-Type": "application/json",
-    },
+  const { data } = await client.query({
+    query: QUERY_SEARCH_BEERS,
+    variables: { query }
   });
-
-  if (response.ok) {
-    return await response.json();
-  } else {
-    alert("No beer with that name found :(");
-  }
+  return data.search;
 }
 
 export const FavouriteBeer = async (beerId) => {
-  const response = await fetch("/api/beers/favourite", {
-    method: "POST",
-    body: JSON.stringify({
-      beerId
-    }),
-    headers: {
-      "Content-Type": "application/json",
-    },
+  const { data, error } = await client.mutate({
+    mutation: ADD_FAVOURITE,
+    variables: { beerId }
   });
-
-  if (!response.ok) {
-    alert("Failed to save your beer!");
-  }
+  return data;
 }
 
 export const UnfavouriteBeer = async (beerId) => {
-  const response = await fetch("/api/beers/unfavourite", {
-    method: "POST",
-    body: JSON.stringify({
-      beerId
-    }),
-    headers: {
-      "Content-Type": "application/json",
-    },
+  const { data, error } = await client.mutate({
+    mutation: REMOVE_FAVOURITE,
+    variables: { beerId }
   });
-
-  if (!response.ok) {
-    alert("Failed to save your beer!");
-  }
+  return data;
 }
 
 export const GetFavouriteBeers = async () => {
-  const response = await fetch("/api/beers/favourites", {
-    method: "GET",
-    headers: { "Content-Type": "application/json" },
+  const { data, error } = await client.query({
+    query: QUERY_FAVOURITES,
   });
-
-  if (response.ok) {
-    return await response.json();
-  } else {
-    console.error(await response.text());
-    alert("Something went wrong :(");
-  }
+  if (error) alert("Something went wrong");
+  return data.favourites;
 }
 
-export const GetBeer = async (beerId) => {
-  const response = await fetch(`/api/beers/${beerId}`, {
-    method: "GET",
-    headers: { "Content-Type": "application/json" },
+export const GetBeer = async (id) => {
+  const { data } = await client.query({
+    query: GET_BEER,
+    variables: { id }
   });
-
-  if (response.ok) {
-    return await response.json();
-  } else {
-    console.error(await response.text());
-    alert("Something went wrong :(");
-  }
+  return data.beer;
 }
