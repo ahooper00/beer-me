@@ -18,5 +18,25 @@
         "name": "Hakuna Matatart",
         "brand": "Bright West Brewery",
         "description": "A crisp, tart ale that's as fresh as a lovely, spring morning, with zesty hints"
+    },
+    {
+        "name": "Passionfruit sour squeeze",
+        "brand": "Hop Skip Jump",
+        "description": ""
+    },
+    {
+        "name": "Mango Berry Tang",
+        "brand": "Hoppy Days",
+        "description": "Fruit and funky, this sour beer gives a great combination of salty and sour"
+    },
+    {
+        "name": "Captain's Punch Sour Beer",
+        "brand": "Hoppy Days",
+        "description": "Set your tastebuds a-tingling with this traditional sour, in perfection balance of hops and tang"
+    },
+    {
+        "name": "North West Sour",
+        "brand": "Bright West Brewery",
+        "description": "A combination of pale, wheat and hops to create a crisp, slightly tart, and ever so delicious beer"
     }
 ]
