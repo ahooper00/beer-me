@@ -15,7 +15,9 @@ body {
   background-color: #f88a3b;
 }
 
-.addReviewButton {
+.addReviewButton,
+.submitReviewButton,
+.submitBeerButton {
   width: 150px;
   border-radius: 20px;
   border: 2px solid #D8E2DC;

@@ -99,7 +99,7 @@ const AddBeerForm = ({ onSubmit }) => {
                             onChange={handleChange}
                         />
                     </div>
-                    <button type='submit'>Submit</button>
+                    <button type='submit' className="submitBeerButton">Submit</button>
                 </form>
             </div>
         </div>

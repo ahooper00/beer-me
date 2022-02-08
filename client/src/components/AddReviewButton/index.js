@@ -68,7 +68,7 @@ const AddReviewForm = ({ onSubmit, beerId }) => {
                         />
                         /10
                     </div>
-                    <button type='submit'>Submit</button>
+                    <button type='submit' className="submitReviewButton">Submit</button>
                 </form>
             </div>
         </div>
