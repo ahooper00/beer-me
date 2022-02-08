@@ -13,6 +13,7 @@ export const login = async (email, password) => {
     alert("Incorrect Email or Password!");
   } else {
     auth.login(data.login.token);
+    client.resetStore();
     document.location.replace("/");
   }
 }
@@ -27,11 +28,13 @@ export const signup = async (email, name, password) => {
     alert("Please ensure all details are entered and password is 8 characters long.");
   } else {
     auth.login(data.addUser.token);
+    client.resetStore();
     document.location.replace("/");
   }
 }
 
 export const logout = async () => {
   auth.logout();
-  document.location.replace("/");
+  client.resetStore();
+  document.location.replace("/login");
 }
