@@ -13,6 +13,11 @@ const styles = {
         width: '200px',
         height: 'auto',
         display: 'flex'
+    },
+    ourGoal: {
+        backgroundColor: "#F6E4D1",
+        width: '100%',
+        display: 'block'
     }
 }
 
@@ -47,10 +52,25 @@ const Home = () => {
             <div className='container'>
                 <div>
                     <h3 style={styles.h3}>
+                        Our Goal
+                    </h3>
+                    <div className="mt-4" style={styles.ourGoal}>
+                        <p>
+                            Our goal is to bring beer lovers (and even haters) into the world of craft beers, and allow the humble locals showcase their new
+                            and improved fermented greats. Keeping all the craft and sour beers in one place makes it easy to surf through different
+                            options, and read through real life reviews of those who have already tasted the sweet (or SOUR) flavours of the beer.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div className='container'>
+                <div>
+                    <h3 style={styles.h3}>
                         Some of our Favourites
                     </h3>
                 </div>
-                <div className="row">
+                <div className="row mt-4">
                     <div className="col-lg-4 col-md-6 col-sm-12">
                         <h5>
                             Stomping Ground Brewery

@@ -16,7 +16,7 @@ body {
 }
 
 .addReviewButton {
-  width: 10%;
+  width: 150px;
   border-radius: 20px;
   border: 2px solid #D8E2DC;
   background-color: #FFD7BA;
@@ -53,22 +53,26 @@ body {
   .login-container {min-width: 100px};
   .loginButton {font-size: 12px};
   .signup-container {min-width: 100px};
+  .addReviewButton {min-width: 50px};
 }
 
 @media (min-width: 768px) {  
   .login-container {min-width: 100px};
   .loginButton {font-size: 12px};
   .signup-container {min-width: 100px};
+  .addReviewButton {min-width: 90px};
 }
 
 @media (min-width: 992px) { 
   .login-container {min-width: 150px};
   .loginButton {font-size: 14px};
   .signup-container {min-width: 150px};
+  .addReviewButton {min-width: 120px};
 }
 
 @media (min-width: 1200px) {  
   .login-container {min-width: 200px}; 
   .loginButton {font-size: 16px};
   .signup-container {min-width: 200px};
+  .addReviewButton {min-width: 150px};
 }

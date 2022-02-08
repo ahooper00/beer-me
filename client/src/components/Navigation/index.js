@@ -7,7 +7,8 @@ const styles = {
     navdiv: {
         textAlign: 'center',
         display: 'flex',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        backgroundColor: "#D8E2DC",
     },
     ul: {
         listStyleType: 'none',
@@ -42,19 +43,19 @@ const Navigation = ({ currentPage }) => {
     }
 
     const favouriteElement = Auth.loggedIn()
-            ? <li style={styles.li}>
-                <a style={styles.a}
-                    href="/favourites"
-                    onClick={() => handlePageClick("Favourites")}
-                    className={page === "Favourites" ? "nav-link active" : "nav-link"}
-                >
-                    Favourites
-                </a>
-            </li>
-            : null
+        ? <li style={styles.li}>
+            <a style={styles.a}
+                href="/favourites"
+                onClick={() => handlePageClick("Favourites")}
+                className={page === "Favourites" ? "nav-link active" : "nav-link"}
+            >
+                Favourites
+            </a>
+        </li>
+        : null
 
     return (
-        <div className="navdiv" style={styles.navdiv}>
+        <div className="navdiv mb-4" style={styles.navdiv}>
             <ul style={styles.ul}>
                 <li style={styles.li}>
                     <Link to='/home' style={styles.a}
@@ -77,6 +78,7 @@ const Navigation = ({ currentPage }) => {
                     </a>
                 </li>
             </ul>
+            <br></br>
         </div>
     )
 }

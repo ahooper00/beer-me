@@ -6,6 +6,20 @@ import { GetBeer } from '../utils/beerService';
 import { useParams } from "react-router-dom";
 import AddReviewButton from '../components/AddReviewButton/index';
 
+const styles = {
+    reviewsDiv: {
+        borderBottom: "1px solid rgb(77, 72, 72)"
+    },
+    ul: {
+        listStyleType: "none",
+        margin: "0",
+        padding: "0"
+    },
+    reviewsTitle: {
+        borderBottom: "1px solid rgb(77, 72, 72)"
+    }
+}
+
 const BeerDetails = () => {
     const { id: beerId } = useParams();
     const [reviews, setReviews] = useState(undefined)
@@ -36,18 +50,21 @@ const BeerDetails = () => {
                     favourite={beer.favourite} />
             </div>
             <br></br>
-            <div>
+            <div className="reviewsTitle" style={styles.reviewsTitle}>
                 <h4>
                     Reviews
                 </h4>
             </div>
-            {reviews.map(review =>
-                <ul>
-                    <li>{review.comment}</li>
-                    <li>{review.rating}</li>
-                    <li>Created by: {review.user}</li>
-                </ul>
-            )}
+            <div style={styles.reviewsDiv} className="pt-2">
+                {reviews.map(review =>
+                    <ul style={styles.ul}>
+                        <li>{review.comment}</li>
+                        <li>{review.rating} /10</li>
+                        <li><u>Created by:</u> {review.user}</li>
+                    </ul>
+                )}
+                <br></br>
+            </div>
         </main>
     )
 }
