@@ -13,11 +13,7 @@ import Footer from './components/Footer';
 import Favourites from './pages/Favourites';
 import BeerDetails from './pages/BeerDetails';
 import Logout from './pages/Logout';
-
-const client = new ApolloClient({
-  uri: '/graphql',
-  cache: new InMemoryCache(),
-});
+import client from './utils/client';
 
 function App() {
   return (

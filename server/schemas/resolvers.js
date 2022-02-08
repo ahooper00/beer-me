@@ -29,7 +29,7 @@ const resolvers = {
         },
         me: async (parent, args, context) => {
             if (context.user) {
-                return await User.findOne({ id: context.user?.id }).populate('reviews');
+                return await User.findOne({ id: context.user?.id });
             }
             throw new AuthenticationError('You need to be logged in!');
         },

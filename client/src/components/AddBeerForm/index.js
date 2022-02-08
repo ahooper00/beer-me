@@ -67,7 +67,7 @@ const AddBeerForm = ({ onSubmit }) => {
                 <form className="addBeerForm" onSubmit={handleSubmit}>
                     <div>
                         <h3>Add your own beer here!</h3>
-                        <label htmlFor="name" className="form-label">Beer Name</label>
+                        <label htmlFor="name" className="form-label p-2">Beer Name</label>
                         <input
                             className="form-input"
                             placeholder='Beer name'
@@ -78,7 +78,7 @@ const AddBeerForm = ({ onSubmit }) => {
                         />
                     </div>
                     <div>
-                        <label htmlFor="brand" className="form-label">Brand</label>
+                        <label htmlFor="brand" className="form-label p-2">Brand</label>
                         <input
                             className="form-input"
                             placeholder='Brand name'
@@ -89,7 +89,7 @@ const AddBeerForm = ({ onSubmit }) => {
                         />
                     </div>
                     <div>
-                        <label htmlFor="description" className="form-label">Description</label>
+                        <label htmlFor="description" className="form-label p-2">Description</label>
                         <input
                             className="form-input"
                             placeholder='Description'

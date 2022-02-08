@@ -56,7 +56,7 @@ const BeerCard = ({ id, name, brand, description, favourite }) => {
     return (
         <div className="card" style={styles.card}>
                 {isFavourite
-                    ? <button className="favouriteButton" onClick={handleUnfavouriteClick}>Favourited!</button>
+                    ? <button className="favouriteButton bg-danger text-light" onClick={handleUnfavouriteClick}>Favourited!</button>
                     : <button className="favouriteButton" onClick={handleFavouriteClick}>
                         Favourite
                     </button>}

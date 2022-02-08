@@ -6,7 +6,7 @@ import '../../App.css';
 
 const styles = {
     img: {
-        width: '600px',
+        width: '550px',
         float: 'right',
         paddingLeft: '40px'
     },
@@ -52,9 +52,9 @@ const Signup = () => {
     return (
         <main>
             <div className="signup-container d-inline-flex flex-wrap flex-lg-row">
-                <div className="card">
+                <div className="card p-2 w-50">
                     <h4 className="card-header bg-dark text-light">Sign Up</h4>
-                    <div className="card-body">
+                    <div className="card-body p-4">
                         {loggedIn ? (
                             <p>
                                 Success! You may now head{' '}
@@ -64,7 +64,7 @@ const Signup = () => {
                             <form onSubmit={handleFormSubmit}>
                                 <div className="col">
                                     <input
-                                        className="form-input"
+                                        className="form-input m-2"
                                         placeholder="Your username"
                                         name="username"
                                         type="text"
@@ -72,7 +72,7 @@ const Signup = () => {
                                         onChange={handleChange}
                                     />
                                     <input
-                                        className="form-input"
+                                        className="form-input m-2"
                                         placeholder="Your email"
                                         name="email"
                                         type="email"
@@ -80,7 +80,7 @@ const Signup = () => {
                                         onChange={handleChange}
                                     />
                                     <input
-                                        className="form-input"
+                                        className="form-input m-2"
                                         placeholder="******"
                                         name="password"
                                         type="password"
@@ -90,7 +90,7 @@ const Signup = () => {
                                 </div>
                                 <div>
                                     <button
-                                        className="btn"
+                                        className="btn m-3"
                                         style={{ cursor: 'pointer' }}
                                         type="submit"
                                     >

@@ -46,7 +46,7 @@ const AddReviewForm = ({ onSubmit, beerId }) => {
                 <form className="addReviewForm" onSubmit={handleSubmit}>
                     <div>
                         <h3>Add your own review here!</h3>
-                        <label htmlFor="name" className="form-label">You review here</label>
+                        <label htmlFor="name" className="form-label p-2">You review here</label>
                         <input
                             className="form-input"
                             placeholder='Review'
@@ -57,7 +57,7 @@ const AddReviewForm = ({ onSubmit, beerId }) => {
                         />
                     </div>
                     <div>
-                        <label htmlFor="brand" className="form-label">Rating</label>
+                        <label htmlFor="brand" className="form-label p-2">Rating</label>
                         <input
                             className="form-input"
                             placeholder='Rating'

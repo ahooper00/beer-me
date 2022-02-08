@@ -1,4 +1,3 @@
-
 import { QUERY_REVIEWS } from './queries';
 import { ADD_REVIEW } from './mutations';
 import client from './client';
