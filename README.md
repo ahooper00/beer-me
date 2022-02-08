@@ -21,8 +21,8 @@ Alternatively, this application is deployed to Heroku, which makes it easy to si
 ## Contributing
 To contribute to the project, simply perform a git clone of the repository. For any changes made, a pull request is required, and I will determine whether to merge the changes or not.
 ## Application
-- Heroku: [Deployed-application](https://lets-get-hopping.herokuapp.com/home)
-- GitHub repo: [React-portfolio](https://github.com/ahooper00/lets-get-hopping)
+- Heroku: [Deployed application](https://lets-get-hopping.herokuapp.com/home)
+- GitHub repo: [Let's Get Hopping](https://github.com/ahooper00/lets-get-hopping)
 
 ![screenshot](client/src/assets/screenshot.jpg)
 ![screenshot-2](client/src/assets/screenshot-2.jpg)
